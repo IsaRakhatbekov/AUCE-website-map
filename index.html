@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Карта сайта AUCA — auca.kg</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				font-family:
+					-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+				background: #f4f7fb;
+				color: #1a2433;
+				padding: 32px 20px;
+				line-height: 1.5;
+			}
+			.wrap {
+				max-width: 1100px;
+				margin: 0 auto;
+			}
+			header {
+				background: #0f2c5c;
+				color: #fff;
+				padding: 32px 36px;
+				border-radius: 14px;
+				margin-bottom: 28px;
+				border-left: 8px solid #e0a800;
+			}
+			header h1 {
+				font-size: 28px;
+				margin-bottom: 8px;
+			}
+			header p {
+				color: #c9d6e8;
+				font-size: 15px;
+			}
+			.legend {
+				display: flex;
+				gap: 22px;
+				flex-wrap: wrap;
+				margin: 18px 0 26px;
+				background: #fff;
+				padding: 16px 22px;
+				border-radius: 10px;
+				font-size: 13px;
+				box-shadow: 0 1px 4px rgba(15, 44, 92, 0.08);
+			}
+			.legend span {
+				display: inline-flex;
+				align-items: center;
+				gap: 7px;
+			}
+			.dot {
+				width: 13px;
+				height: 13px;
+				border-radius: 3px;
+				display: inline-block;
+			}
+			.stats {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+				gap: 14px;
+				margin-bottom: 28px;
+			}
+			.stat {
+				background: #fff;
+				border-radius: 10px;
+				padding: 18px 20px;
+				box-shadow: 0 1px 4px rgba(15, 44, 92, 0.08);
+			}
+			.stat b {
+				font-size: 30px;
+				color: #1c5fb0;
+				display: block;
+			}
+			.stat small {
+				color: #5b6776;
+				font-size: 13px;
+			}
+
+			.section {
+				margin-bottom: 14px;
+			}
+			details {
+				background: #fff;
+				border-radius: 10px;
+				margin-bottom: 10px;
+				box-shadow: 0 1px 4px rgba(15, 44, 92, 0.07);
+				overflow: hidden;
+			}
+			details > summary {
+				cursor: pointer;
+				padding: 15px 20px;
+				font-weight: 700;
+				font-size: 16px;
+				background: #1c5fb0;
+				color: #fff;
+				list-style: none;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				user-select: none;
+			}
+			details > summary::-webkit-details-marker {
+				display: none;
+			}
+			details > summary:hover {
+				background: #174e94;
+			}
+			summary .badge {
+				background: rgba(255, 255, 255, 0.22);
+				padding: 2px 10px;
+				border-radius: 20px;
+				font-size: 12px;
+				font-weight: 600;
+			}
+			.lvl {
+				padding: 6px 0;
+			}
+			.node {
+				display: flex;
+				align-items: flex-start;
+				gap: 8px;
+				padding: 7px 14px;
+				border-bottom: 1px solid #eef2f7;
+				font-size: 14px;
+			}
+			.node:hover {
+				background: #f7fafe;
+			}
+			.arrow {
+				color: #0e9594;
+				font-weight: 700;
+				flex-shrink: 0;
+			}
+			.node a {
+				color: #1c5fb0;
+				text-decoration: none;
+			}
+			.node a:hover {
+				text-decoration: underline;
+			}
+			.node .name {
+				font-weight: 600;
+				color: #1a2433;
+			}
+			.node .url {
+				color: #8a95a3;
+				font-size: 12px;
+				word-break: break-all;
+				text-decoration: none;
+			}
+			.node a.url:hover {
+				text-decoration: underline;
+			}
+			.l1 {
+				padding-left: 14px;
+			}
+			.l2 {
+				padding-left: 44px;
+			}
+			.l3 {
+				padding-left: 74px;
+			}
+			.l4 {
+				padding-left: 104px;
+			}
+			.tag {
+				font-size: 10px;
+				font-weight: 700;
+				padding: 1px 7px;
+				border-radius: 4px;
+				text-transform: uppercase;
+				flex-shrink: 0;
+				letter-spacing: 0.3px;
+			}
+			.keep {
+				background: #dcfce7;
+				color: #166534;
+			}
+			.cut {
+				background: #fee2e2;
+				color: #b91c1c;
+			}
+			.archive {
+				background: #fef3c7;
+				color: #92400e;
+			}
+			.ext {
+				background: #e0e7ff;
+				color: #3730a3;
+			}
+			.grouped {
+				margin: 6px 14px;
+				padding: 12px 16px;
+				background: #fffbeb;
+				border-left: 4px solid #e0a800;
+				border-radius: 6px;
+				font-size: 13px;
+				color: #5b6776;
+			}
+			.grouped b {
+				color: #92400e;
+			}
+			footer {
+				margin-top: 30px;
+				padding: 22px;
+				background: #0f2c5c;
+				color: #c9d6e8;
+				border-radius: 12px;
+				font-size: 14px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<header>
+				<h1>Карта сайта AUCA — auca.kg</h1>
+				<p>
+					Полная иерархическая структура сайта (русская версия). Стрелки →
+					показывают вложенность: откуда куда ведёт переход.
+				</p>
+			</header>
+
+			<div class="stats">
+				<div class="stat"><b>200+</b><small>уникальных URL всего</small></div>
+				<div class="stat"><b>13</b><small>пунктов в главном меню</small></div>
+				<div class="stat">
+					<b>~150</b><small>архивных страниц лицензий/сертификатов</small>
+				</div>
+				<div class="stat">
+					<b>3</b><small>языковые версии (EN/RU/KG)</small>
+				</div>
+			</div>
+			<div class="legend">
+				<span
+					><i class="dot keep" style="background: #dcfce7"></i> Оставить</span
+				>
+				<span
+					><i class="dot" style="background: #fef3c7"></i> Архив (скрыть)</span
+				>
+				<span
+					><i class="dot cut" style="background: #fee2e2"></i>
+					Убрать/объединить</span
+				>
+				<span
+					><i class="dot ext" style="background: #e0e7ff"></i> Внешняя
+					ссылка</span
+				>
+				<span
+					><b style="color: #0e9594">→</b> вложенность (родитель →
+					ребёнок)</span
+				>
+			</div>
+
+			<!-- ГЛАВНОЕ МЕНЮ -->
+			<details open>
+				<summary>
+					Главное меню (Header) <span class="badge">13 пунктов</span>
+				</summary>
+				<div class="lvl">
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Главная</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/main/" target="_blank" rel="noopener noreferrer"
+							>/ru/main/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Об университете</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/auca_at_a_glance/" target="_blank" rel="noopener noreferrer"
+							>/ru/auca_at_a_glance/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Поступающим</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/admissions/" target="_blank" rel="noopener noreferrer"
+							>/ru/admissions/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Учеба</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/academics/" target="_blank" rel="noopener noreferrer"
+							>/ru/academics/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Исследования</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/research/" target="_blank" rel="noopener noreferrer"
+							>/ru/research/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Университетская жизнь</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/university_life/" target="_blank" rel="noopener noreferrer"
+							>/ru/university_life/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Служение обществу</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/ce/" target="_blank" rel="noopener noreferrer"
+							>/ru/ce/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Офис по развитию</span>
+							<span class="tag cut">объединить</span><br /><a class="url" href="https://www.auca.kg/ru/development/" target="_blank" rel="noopener noreferrer"
+							>/ru/development/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Выпускники</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/my_auca/" target="_blank" rel="noopener noreferrer"
+							>/ru/my_auca/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Инновационный колледж AUCA</span>
+							<span class="tag ext">внешняя</span><br /><a class="url" href="https://tsiauca.kg" target="_blank" rel="noopener noreferrer"
+							>tsiauca.kg</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Перевод в АУЦА</span>
+							<span class="tag cut">в Поступающим</span><br /><a class="url" href="https://www.auca.kg/ru/transfer_students/" target="_blank" rel="noopener noreferrer"
+							>/ru/transfer_students/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Внести вклад</span>
+							<span class="tag cut">объединить</span><br /><a class="url" href="https://www.auca.kg/ru/join_the_effort/" target="_blank" rel="noopener noreferrer"
+							>/ru/join_the_effort/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">AUCA Giving Day</span>
+							<span class="tag cut">убрать из меню</span><br /><a class="url" href="https://www.auca.kg/ru/p6360997658/" target="_blank" rel="noopener noreferrer"
+							>/ru/p6360997658/</a
+						></span
+						>
+					</div>
+				</div>
+			</details>
+			<!-- ОБ УНИВЕРСИТЕТЕ -->
+			<details open>
+				<summary>
+					Об университете <span class="badge">~25 страниц + архивы</span>
+				</summary>
+				<div class="lvl">
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Коротко об АУЦА</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/about_auca_/" target="_blank" rel="noopener noreferrer"
+							>/ru/about_auca_/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Миссия, ценности и цели</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/mission/" target="_blank" rel="noopener noreferrer"
+							>/ru/mission/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">История</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/auca_history/" target="_blank" rel="noopener noreferrer"
+							>/ru/auca_history/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Академические программы</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/acpr/" target="_blank" rel="noopener noreferrer"
+							>/ru/acpr/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Подготовительная программа (АНП)</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/prepnga/" target="_blank" rel="noopener noreferrer"
+							>/ru/prepnga/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Виртуальный музей АУЦА</span>
+							<span class="tag cut">переработать/убрать</span><br /><a class="url" href="https://www.auca.kg/ru/museum_20/" target="_blank" rel="noopener noreferrer"
+								>/ru/museum_20/</a
+							></span
+						>
+					</div>
+					<div class="node l3">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Начало: История АУЦА</span>
+							<span class="tag archive">архив</span><br /><a class="url" href="https://www.auca.kg/ru/p19207194/" target="_blank" rel="noopener noreferrer"
+							>/ru/p19207194/</a
+						></span
+						>
+					</div>
+					<div class="node l4">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Фотоальбом: История АУЦА</span>
+							<span class="tag archive">архив</span><br /><a class="url" href="https://www.auca.kg/ru/photo_album/" target="_blank" rel="noopener noreferrer"
+							>/ru/photo_album/</a
+						></span
+						>
+					</div>
+					<div class="node l3">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Студенты</span>
+							<span class="tag archive">архив</span><br /><a class="url" href="https://www.auca.kg/ru/p19228476/" target="_blank" rel="noopener noreferrer"
+							>/ru/p19228476/</a
+						></span
+						>
+					</div>
+					<div class="node l4">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Фотоальбом: Студенческая жизнь</span>
+							<span class="tag archive">архив</span><br /><a class="url" href="https://www.auca.kg/ru/photoalbum20/" target="_blank" rel="noopener noreferrer"
+							>/ru/photoalbum20/</a
+						></span
+						>
+					</div>
+					<div class="node l3">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Выпускники</span>
+							<span class="tag archive">архив</span><br /><a class="url" href="https://www.auca.kg/ru/p19405874/" target="_blank" rel="noopener noreferrer"
+							>/ru/p19405874/</a
+						></span
+						>
+					</div>
+					<div class="node l3">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Бард</span>
+							<span class="tag cut">объединить</span><br /><a class="url" href="https://www.auca.kg/ru/p19415892/" target="_blank" rel="noopener noreferrer"
+							>/ru/p19415892/</a
+						></span
+						>
+					</div>
+					<div class="node l4">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Опыт с Бард Колледжем</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/bardpartnership/" target="_blank" rel="noopener noreferrer"
+							>/ru/bardpartnership/</a
+						></span
+						>
+					</div>
+					<div class="node l3">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Будущее</span>
+							<span class="tag archive">архив</span><br /><a class="url" href="https://www.auca.kg/ru/p19433715/" target="_blank" rel="noopener noreferrer"
+							>/ru/p19433715/</a
+						></span
+						>
+					</div>
+					<div class="node l4">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Фотоальбом: Будущее</span>
+							<span class="tag archive">архив</span><br /><a class="url" href="https://www.auca.kg/ru/photo_albumfuture20/" target="_blank" rel="noopener noreferrer"
+							>/ru/photo_albumfuture20/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Аккредитация в Кыргызской Республике</span>
+							<span class="tag keep">оставить (свод)</span><br /><a class="url" href="https://www.auca.kg/ru/accreditation_kr/" target="_blank" rel="noopener noreferrer"
+								>/ru/accreditation_kr/</a
+							></span
+						>
+					</div>
+					<div class="grouped">
+						<b>⚠️ Аккредитации по 13 направлениям</b> (Антропология, Прикладная
+						геология, Прикладная математика, Бизнес управление, Экономика,
+						Экология, Европоведение, Юриспруденция, Международные отношения,
+						Журналистика, Свободные искусства, Психология, Социология, ПО,
+						Телевидение).<br /><br />
+						Каждое направление → <b>Лицензии</b> +
+						<b>Сертификаты аккредитации</b>, и внутри каждого — отдельные
+						страницы по годам:
+						<b
+							>1999–2003, 2003–2008, 2008–2013, 2013–2017, 2015–2017, 2016–2020,
+							2017–наст., 2020–2025, 2023–наст., 2025–наст.</b
+						><br /><br />
+						<b>Итого ~150 архивных страниц.</b> Рекомендация: оставить только
+						актуальную аккредитацию каждой программы на виду, все исторические
+						лицензии/сертификаты — свернуть в архивный раздел или PDF-список.
+						Это главный источник «раздувания» сайта.
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Руководство АУЦА</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/leadership/" target="_blank" rel="noopener noreferrer"
+							>/ru/leadership/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Ученый Совет</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/faculty_senate/" target="_blank" rel="noopener noreferrer"
+							>/ru/faculty_senate/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Административные подразделения</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/admdep/" target="_blank" rel="noopener noreferrer"
+							>/ru/admdep/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Справочники и Календари</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/dircal/" target="_blank" rel="noopener noreferrer"
+							>/ru/dircal/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Контакты АУЦА</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/contacts/" target="_blank" rel="noopener noreferrer"
+							>/ru/contacts/</a
+						></span
+						>
+					</div>
+				</div>
+			</details>
+
+			<!-- ПОСТУПАЮЩИМ -->
+			<details>
+				<summary>Поступающим <span class="badge">~6 страниц</span></summary>
+				<div class="lvl">
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Обзор поступления</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/admissions/" target="_blank" rel="noopener noreferrer"
+							>/ru/admissions/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Подать заявку в АУЦА</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/p3276/" target="_blank" rel="noopener noreferrer"
+							>/ru/p3276/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Финансовая поддержка</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/financial_aid/" target="_blank" rel="noopener noreferrer"
+							>/ru/financial_aid/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Подготовка к АУЦА (АНП)</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/p3236/" target="_blank" rel="noopener noreferrer"
+							>/ru/p3236/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Перевод в АУЦА</span>
+							<span class="tag keep">перенести сюда</span><br /><a class="url" href="https://www.auca.kg/ru/transfer_students/" target="_blank" rel="noopener noreferrer"
+								>/ru/transfer_students/</a
+							></span
+						>
+					</div>
+				</div>
+			</details>
+
+			<!-- УЧЕБА -->
+			<details>
+				<summary>Учеба <span class="badge">~8 страниц</span></summary>
+				<div class="lvl">
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Программы бакалавриата</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/ap/" target="_blank" rel="noopener noreferrer"
+							>/ru/ap/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Программы магистратуры</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/graduate_programs/" target="_blank" rel="noopener noreferrer"
+							>/ru/graduate_programs/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Академические правила и расписание</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/regoff1/" target="_blank" rel="noopener noreferrer"
+							>/ru/regoff1/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Офисы Академической Поддержки</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/ulslast/" target="_blank" rel="noopener noreferrer"
+							>/ru/ulslast/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Академия Нового Поколения</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/p3236/" target="_blank" rel="noopener noreferrer"
+							>/ru/p3236/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Библиотека</span>
+							<span class="tag ext">внешняя</span><br /><a class="url" href="https://library.auca.kg" target="_blank" rel="noopener noreferrer"
+							>library.auca.kg</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name"
+								>Дополнительное образование (Мейкерспейс)</span
+							>
+							<span class="tag ext">внешняя</span><br /><a class="url" href="https://mldc.auca.kg" target="_blank" rel="noopener noreferrer"
+							>mldc.auca.kg</a
+						></span
+						>
+					</div>
+				</div>
+			</details>
+			<!-- ИССЛЕДОВАНИЯ -->
+			<details>
+				<summary>Исследования <span class="badge">~2 страницы</span></summary>
+				<div class="lvl">
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Исследовательские институты / команды</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/research_institutes_teams/" target="_blank" rel="noopener noreferrer"
+							>/ru/research_institutes_teams/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name"
+								>Институциональный Наблюдательный Совет (IRB)</span
+							>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/res_irb_home0/" target="_blank" rel="noopener noreferrer"
+							>/ru/res_irb_home0/</a
+						></span
+						>
+					</div>
+				</div>
+			</details>
+
+			<!-- УНИВЕРСИТЕТСКАЯ ЖИЗНЬ -->
+			<details>
+				<summary>
+					Университетская жизнь <span class="badge">~5 страниц + динамика</span>
+				</summary>
+				<div class="lvl">
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Объединенный Календарь АУЦА</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/auca_calendar/" target="_blank" rel="noopener noreferrer"
+							>/ru/auca_calendar/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Новости и предстоящие мероприятия</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/ulne/" target="_blank" rel="noopener noreferrer"
+							>/ru/ulne/</a
+						></span
+						>
+					</div>
+					<div class="node l2">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Лента новостей (динамические статьи)</span>
+							<span class="tag keep">шаблон</span><br /><a class="url" href="https://www.auca.kg/ru/auca_news/" target="_blank" rel="noopener noreferrer"
+							>/ru/auca_news/ → /7023/, /7022/, /7021/...</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Студенческая жизнь и сервисы поддержки</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/ulsl/" target="_blank" rel="noopener noreferrer"
+							>/ru/ulsl/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Услуги и ресурсы для сообщества</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/ulcs/" target="_blank" rel="noopener noreferrer"
+							>/ru/ulcs/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Конкурсы для школьников</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/ulslchs/" target="_blank" rel="noopener noreferrer"
+							>/ru/ulslchs/</a
+						></span
+						>
+					</div>
+				</div>
+			</details>
+
+			<!-- СЛУЖЕНИЕ ОБЩЕСТВУ -->
+			<details>
+				<summary>
+					Служение обществу (CCE) <span class="badge">~3 страницы</span>
+				</summary>
+				<div class="lvl">
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Служение обществу — обзор</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/cce/" target="_blank" rel="noopener noreferrer"
+							>/ru/cce/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Психологическое консультирование</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/about_offices_counseling/" target="_blank" rel="noopener noreferrer"
+							>/ru/about_offices_counseling/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Юридическая клиника</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/legal_clinic/" target="_blank" rel="noopener noreferrer"
+							>/ru/legal_clinic/</a
+						></span
+						>
+					</div>
+				</div>
+			</details>
+			<!-- ВЫПУСКНИКИ / РАЗВИТИЕ -->
+			<details>
+				<summary>
+					Выпускники и Развитие <span class="badge">~5 страниц</span>
+				</summary>
+				<div class="lvl">
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Выпускники (My AUCA)</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/my_auca/" target="_blank" rel="noopener noreferrer"
+							>/ru/my_auca/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Истории успеха выпускников</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/p5669738819/" target="_blank" rel="noopener noreferrer"
+							>/ru/p5669738819/ → /about_auca_alumni_success_stories/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Профессора АУЦА (истории)</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/about_auca_professors_stories/" target="_blank" rel="noopener noreferrer"
+							>/ru/about_auca_professors_stories/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Офис по развитию</span>
+							<span class="tag cut">объединить</span><br /><a class="url" href="https://www.auca.kg/ru/development/" target="_blank" rel="noopener noreferrer"
+							>/ru/development/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Внести вклад / Поддержать АУЦА</span>
+							<span class="tag cut">объединить</span><br /><a class="url" href="https://www.auca.kg/ru/join_the_effort/" target="_blank" rel="noopener noreferrer"
+							>/ru/join_the_effort/ + /whysupportauca/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">AUCA Giving Day</span>
+							<span class="tag cut">убрать из меню</span><br /><a class="url" href="https://www.auca.kg/ru/p6360997658/" target="_blank" rel="noopener noreferrer"
+							>/ru/p6360997658/</a
+						></span
+						>
+					</div>
+				</div>
+			</details>
+
+			<!-- ПОДВАЛ -->
+			<details>
+				<summary>
+					Подвал и служебные страницы <span class="badge">~10 ссылок</span>
+				</summary>
+				<div class="lvl">
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Справочник АУЦА</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/directory/" target="_blank" rel="noopener noreferrer"
+							>/ru/directory/ , /ru/dirfooter/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Webmail</span>
+							<span class="tag ext">внешняя</span><br /><a class="url" href="https://mail.google.com/a/auca.kg" target="_blank" rel="noopener noreferrer"
+							>mail.google.com/a/auca.kg</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">eCourses</span>
+							<span class="tag ext">внешняя</span><br /><a class="url" href="https://e-course.auca.kg" target="_blank" rel="noopener noreferrer"
+							>e-course.auca.kg</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Карта сайта</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/sitemap/" target="_blank" rel="noopener noreferrer"
+							>/ru/sitemap/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Возможности трудоустройства</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/employee_opportunities/" target="_blank" rel="noopener noreferrer"
+							>/ru/employee_opportunities/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Экстренные контакты</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/emergencycontacts/" target="_blank" rel="noopener noreferrer"
+							>/ru/emergencycontacts/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Помощь (Get Help)</span>
+							<span class="tag keep">оставить</span><br /><a class="url" href="https://www.auca.kg/ru/gethelp/" target="_blank" rel="noopener noreferrer"
+							>/ru/gethelp/</a
+						></span
+						>
+					</div>
+					<div class="node l1">
+						<span class="arrow">→</span
+						><span
+							><span class="name">Рекомендованное видео / Студгазета</span>
+							<span class="tag archive">проверить</span><br /><a class="url" href="https://www.auca.kg/ru/p2374/" target="_blank" rel="noopener noreferrer"
+							>/ru/p2374/ , /ru/support_auca/</a
+						></span
+						>
+					</div>
+				</div>
+			</details>
+
+			<footer>
+				Карта собрана на основе официальной /ru/sitemap/ сайта auca.kg. Раздел
+				«Об университете» — самый перегруженный: ~150 из 200+ страниц приходятся
+				на архивные лицензии и сертификаты аккредитации. Это ключевая зона для
+				оптимизации структуры.
+			</footer>
+		</div>
+		<script>
+			window.va =
+				window.va ||
+				function () {
+					(window.vaq = window.vaq || []).push(arguments);
+				};
+		</script>
+		<script defer src="/_vercel/insights/script.js"></script>
+		<script>
+			document.addEventListener('click', function (e) {
+				var link = e.target.closest('a.url');
+				if (!link || typeof window.va !== 'function') return;
+				window.va('event', {
+					name: 'sitemap_link',
+					data: {
+						path: (link.textContent || '').trim().slice(0, 200),
+						href: link.href.slice(0, 200),
+					},
+				});
+			});
+		</script>
+	</body>
+</html>
