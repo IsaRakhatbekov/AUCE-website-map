@@ -18,8 +18,8 @@ export default function RootLayout({
 		<html lang="ru">
 			<body>
 				{children}
-				<LinkClickTracker />
 				<Analytics />
+				<LinkClickTracker />
 			</body>
 		</html>
 	);
